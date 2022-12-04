@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+}
+header {
+  height: 70px;
+  background: #cfcfcf;
+}
+#hamburger-btn {
+  height: 100%;
+}
+#hamburger-btn span {
+  position: relative;
+  top: 50%;
+  left: 15px;
+
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: #000;
+  border-radius: 5px;
+
+  transition: 0.5s;
+}
+#hamburger-btn span::before {
+  position: absolute;
+  top: 10px;
+  content: '';
+
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: #000;
+  border-radius: 5px;
+
+  transition: 0.5s;
+}
+#hamburger-btn span::after {
+  position: absolute;
+  top: -10px;
+  content: '';
+
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: #000;
+  border-radius: 5px;
+
+  transition: 0.5s;
+}
+#hamburger-btn span.close {
+  background: transparent;
+
+  transition: 0.5s;
+}
+#hamburger-btn span.close::before {
+  transform: rotate(-45deg);
+  top: 0;
+
+  transition: 0.5s;
+}
+#hamburger-btn span.close::after {
+  transform: rotate(45deg);
+  top: 0;
+
+  transition: 0.5s;
+}
+/* 前回はここまで */
+
+.menu-sp {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  z-index: 50;
+  transition: left 0.5s;
+
+  background-color: rgb(215, 147, 147);
+  padding-top: 70px;
+  padding-left: 15px;
+  /* background-color: #fff; */
+}
+.add-menu-sp {
+  left: 0px;
+}
+.modal-sp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 30;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.add-modal-up {
+}
+
+/* メニュー */
+
+/* モーダル */
+
+/* 読み込み時のちらつく現象回避 */
+
+
+
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    color: #111;
+    text-decoration: none;
+}
+body{
+    margin: 0;
+}
+/* 以上、リセットCSS */
+
+header{
+    height: 70px;
+    background: #cfcfcf;
+}
+
+.hamburger-btn{
+    height: 100%;
+}
+
+.hamburger-btn span{
+    position: relative;
+    top: 50%;
+    left: 15px;
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #000;
+    border-radius: 5px;
+    transition: 0.5s;
+    z-index: 100;
+}
+
+.hamburger-btn span::before{
+    position: absolute;
+    top: 10px;
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #000;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.hamburger-btn span::after{
+    position: absolute;
+    top: -10px;
+    content: ""; 
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #000;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.hamburger-btn span.close{
+    background: transparent;
+}
+
+.hamburger-btn span.close::before{
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.hamburger-btn span.close::after{
+    transform: rotate(45deg);
+    top: 0;
+}
+/* 前回はここまで */
+
+/* 今回はここから */
+/***********************
+* ハンバーガーメニュー部分
+***********************/
+/* メニュー */
+.menu-sp {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    z-index: 50;
+    transition: left 0.5s;
+    background-color: #fff;
+    padding-top: 70px;
+    padding-left: 15px;
+}
+.add-menu-sp {
+    left: 0;
+}
+
+
+
+/* モーダル */
+.modal-sp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.add-modal-sp  {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* 読み込み時のちらつく現象回避 */
+.preload-transition * {
+    transition: none;
+}

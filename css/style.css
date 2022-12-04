@@ -8,6 +8,8 @@
   --upmove-uper-start: 0s;
   --upmove-lower-start: 2.4s;
   --upmove-step: 0.1s;
+  --modalmenu-color-uper: #a1a3af;
+  --modalmenu-color-lower: #d6d0d0;
 }
 body {
   max-width: 1200px;
@@ -29,7 +31,7 @@ header {
 .logo__img {
   padding: 12px 0 0 120px;
 }
-.nav__menu ul {
+#nav__menu ul {
   display: flex;
   font-family: Lucida Sans Unicode;
   font-size: 16px;
@@ -41,7 +43,7 @@ header {
   margin: 30px 126px 30px 0;
   position: relative;
 }
-.nav__menu li {
+#nav__menu li {
   margin-left: 40px;
   z-index: 99;
 }
@@ -59,23 +61,23 @@ header {
   transition: all 0.5s;
 }
 /* ホバーでバーの位置を変化 */
-.nav__menu li:nth-child(1):hover ~ .nav__menu--bar {
+#nav__menu li:nth-child(1):hover ~ .nav__menu--bar {
   left: 24px;
   width: 76px;
 }
-.nav__menu li:nth-child(2):hover ~ .nav__menu--bar {
+#nav__menu li:nth-child(2):hover ~ .nav__menu--bar {
   left: 108px;
   width: 104px;
 }
-.nav__menu li:nth-child(3):hover ~ .nav__menu--bar {
+#nav__menu li:nth-child(3):hover ~ .nav__menu--bar {
   left: 219px;
   width: 96px;
 }
-.nav__menu li:nth-child(4):hover ~ .nav__menu--bar {
+#nav__menu li:nth-child(4):hover ~ .nav__menu--bar {
   left: 325px;
   width: 66px;
 }
-.nav__menu li:nth-child(5):hover ~ .nav__menu--bar {
+#nav__menu li:nth-child(5):hover ~ .nav__menu--bar {
   left: 403px;
   width: 88px;
 }
@@ -89,7 +91,6 @@ header {
   font-size: 50px;
   font-weight: 400;
   color: #ffffff;
-  /* letter-spacing: 0.1em; */
   margin: 153px 0 0 120px;
 }
 @keyframes upmove_uper-anim {
@@ -233,54 +234,112 @@ header {
 .upmove_lower span:nth-child(14) {
   animation-delay: calc(var(--upmove-lower-start) + var(--upmove-step) * 14);
 }
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    */
-
-/************************************************
-    レスポンシブ対応 */
-
+/* レスポンシブ対応 */
 @media screen and (max-width: 768px) {
+  .pc {
+    display: none;
+  }
   body {
     min-width: 390px;
-    /* background-image: url("../img/keyvisual-sp.webp"); */
+    width: 100%;
+    background-image: url('../img/keyvisual-sp.webp');
+  }
+  body.no_scroll {
+    overflow: hidden;
   }
   header {
+    width: 100%;
     height: 93px;
   }
   .logo__img {
     padding: 12px 0 0 0;
     margin: 0 auto;
   }
-  .nav__menu {
-    display: none;
+  #nav__menu {
+    position: fixed;
+    top: 0;
+    right: -273px;
+    width: 273px;
+    height: 100vh;
+    z-index: 99;
+    transition: right 0.5s;
+    background: linear-gradient(
+      var(--modalmenu-color-uper),
+      var(--modalmenu-color-lower)
+    );
+  }
+  #nav__menu ul {
+    display: block;
+    margin: 81px 0 0 97px;
+  }
+  #nav__menu li {
+    margin: 0 0 20px 0;
+  }
+  #hamburger-btn {
+    position: fixed;
+    top: 23px;
+    right: 30px;
+    z-index: 100;
+    width: 28px;
+    height: 28px;
+  }
+  #hamburger-btn span {
+    position: relative;
+    top: 50%;
+    left: 0px;
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: 0.5s;
+  }
+  #hamburger-btn span::before {
+    position: absolute;
+    top: 10px;
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  #hamburger-btn span::after {
+    position: absolute;
+    top: -10px;
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  #hamburger-btn span.close {
+    background: transparent;
+    transition: 0.5s;
+  }
+  #hamburger-btn span.close::before {
+    transform: rotate(-45deg);
+    top: 0;
+    transition: 0.5s;
+  }
+  #hamburger-btn span.close::after {
+    transform: rotate(45deg);
+    top: 0;
+    transition: 0.5s;
+  }
+  #nav__menu.add-menu-sp {
+    right: 0;
+    transition: right 0.5s;
+  }
+  .add-modal-sp {
+    visibility: visible;
+    opacity: 1;
   }
   .catch {
-    margin: 310px auto;
+    margin: 310px auto 0;
     font-size: 45px;
     width: max-content;
   }
@@ -291,13 +350,5 @@ header {
   .upmove_lower {
     width: fit-content;
     margin: 0 auto 0;
-  }
-}
-@media screen and (max-width: 460px) {
-  body {
-    min-width: 390px;
-    background-image: url('../img/keyvisual-sp.webp');
-    background-size: cover;
-    background-attachment: fixed;
   }
 }
