@@ -236,6 +236,14 @@ header {
 }
 /* レスポンシブ対応 */
 @media screen and (max-width: 768px) {
+  .scrollbar {
+    -ms-overflow-style: none; /* IE, Edge 対応 */
+    scrollbar-width: none; /* Firefox 対応 */
+  }
+  .scrollbar ::-webkit-scrollbar {
+    /* Chrome, Safari 対応 */
+    display: none;
+  }
   .pc {
     display: none;
   }
