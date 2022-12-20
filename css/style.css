@@ -1,7 +1,4 @@
 @charset "UTF-8";
-* {
-  /* outline: 1px #000 solid; */
-}
 :root {
   --menuselect-color: #8dce76;
   --animation-speed: 1.5s;
@@ -11,87 +8,104 @@
   --modalmenu-color-uper: #a1a3af;
   --modalmenu-color-lower: #d6d0d0;
 }
+html {
+  font-size: clamp(1px, 1.33vw, 16px);
+}
 body {
   max-width: 1200px;
-  min-width: 1020px;
   height: auto;
   margin: auto;
-  background-position: top center;
-  background-image: url('../img/keyvisual.webp');
-  background-repeat: no-repeat;
-  background-attachment: local;
 }
 header {
   width: 100%;
-  height: 85px;
+  height: clamp(1px, 7.08vw, 85px);
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ffffff;
 }
 .logo__img {
-  padding: 12px 0 0 120px;
+  display: flex;
+  padding: clamp(1px, 1vw, 12px) 0 0 clamp(1px, 10vw, 120px);
+}
+.logo__img img {
+  width: clamp(1px, 12vw, 144px);
+  height: clamp(1px, 5.25vw, 63px);
 }
 #nav__menu ul {
   display: flex;
   font-family: Lucida Sans Unicode;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 25px;
+  line-height: 1.56;
   letter-spacing: 0em;
   text-align: left;
   color: #ffffff;
-  margin: 30px 126px 30px 0;
+  margin: clamp(1px, 2.5vw, 30px) clamp(1px, 10.5vw, 126px)
+    clamp(1px, 2.5vw, 30px) 0;
   position: relative;
 }
 #nav__menu li {
-  margin-left: 40px;
   z-index: 99;
+}
+#nav__menu li:nth-child(n + 2) {
+  z-index: 99;
+  margin-left: clamp(1px, 3.33vw, 40px);
+}
+#hamburger-btn {
+  display: none;
 }
 /* 黒いバーのスタイル */
 .nav__menu--bar {
   position: absolute;
   display: block;
   bottom: 0;
-  left: 24px;
-  width: 76px;
-  height: 25px;
+  left: clamp(-15px, -1.25vw, -1px);
+  width: clamp(1px, 6.33vw, 76px);
+  height: clamp(1px, 2.08vw, 25px);
   background: var(--menuselect-color);
-  border-radius: 12px;
+  border-radius: clamp(1px, 1vw, 12px);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 /* ホバーでバーの位置を変化 */
 #nav__menu li:nth-child(1):hover ~ .nav__menu--bar {
-  left: 24px;
-  width: 76px;
+  left: clamp(-15px, -1.25vw, -1px);
+  width: clamp(1px, 6.33vw, 76px);
 }
 #nav__menu li:nth-child(2):hover ~ .nav__menu--bar {
-  left: 108px;
-  width: 104px;
+  left: clamp(1px, 5.67vw, 68px);
+  width: clamp(1px, 8.67vw, 104px);
 }
 #nav__menu li:nth-child(3):hover ~ .nav__menu--bar {
-  left: 219px;
-  width: 96px;
+  left: clamp(1px, 15vw, 180px);
+  width: clamp(1px, 7.83vw, 94px);
 }
 #nav__menu li:nth-child(4):hover ~ .nav__menu--bar {
-  left: 325px;
-  width: 66px;
+  left: clamp(1px, 23.83vw, 286px);
+  width: clamp(1px, 5.33vw, 64px);
 }
 #nav__menu li:nth-child(5):hover ~ .nav__menu--bar {
-  left: 403px;
-  width: 88px;
+  left: clamp(1px, 30.33vw, 364px);
+  width: clamp(1px, 7.17vw, 86px);
 }
 .farstview {
   width: 100%;
   margin: 0 auto 0;
 }
+.farstview img {
+  position: absolute;
+  width: clamp(1px, 100vw, 1200px);
+  height: clamp(1px, 54.17vw, 650px);
+  top: 0;
+  z-index: -1;
+}
 .catch {
   display: block;
   font-family: Constantia;
-  font-size: 50px;
+  font-size: 3.125rem;
   font-weight: 400;
   color: #ffffff;
-  margin: 153px 0 0 120px;
+  margin: clamp(1px, 12.75vw, 153px) 0 0 clamp(1px, 10vw, 120px);
 }
 @keyframes upmove_uper-anim {
   0% {
@@ -236,6 +250,9 @@ header {
 }
 /* レスポンシブ対応 */
 @media screen and (max-width: 768px) {
+  html {
+    font-size: clamp(12px, 4.1vw, 31px);
+  }
   .scrollbar {
     -ms-overflow-style: none; /* IE, Edge 対応 */
     scrollbar-width: none; /* Firefox 対応 */
@@ -248,26 +265,29 @@ header {
     display: none;
   }
   body {
-    min-width: 390px;
+    min-width: 300px;
     width: 100%;
-    background-image: url('../img/keyvisual-sp.webp');
   }
   body.no_scroll {
     overflow: hidden;
   }
   header {
     width: 100%;
-    height: 93px;
+    height: clamp(71px, 23.8vw, 183px);
   }
   .logo__img {
-    padding: 12px 0 0 0;
+    padding: clamp(12px, 4.1vw, 32px) 0 0 0;
     margin: 0 auto;
+  }
+  .logo__img img {
+    width: clamp(110px, 36.9vw, 284px);
+    height: clamp(48px, 16.2vw, 124px);
   }
   #nav__menu {
     position: fixed;
     top: 0;
-    right: -273px;
-    width: 273px;
+    right: clamp(-538px, -70vw, -210px);
+    width: clamp(210px, 70vw, 538px);
     height: 100vh;
     z-index: 99;
     transition: right 0.5s;
@@ -278,50 +298,51 @@ header {
   }
   #nav__menu ul {
     display: block;
-    margin: 81px 0 0 97px;
+    margin: clamp(62px, 20.77vw, 160px) 0 0 clamp(74px, 24.87vw, 191px);
   }
-  #nav__menu li {
-    margin: 0 0 20px 0;
+  #nav__menu li:nth-child(n + 2) {
+    margin: clamp(15px, 5.13vw, 39px) 0 0 0;
   }
   #hamburger-btn {
+    display: block;
     position: fixed;
-    top: 23px;
-    right: 30px;
+    top: clamp(23px, 7.69vw, 59px);
+    right: clamp(23px, 7.69vw, 59px);
     z-index: 100;
-    width: 28px;
-    height: 28px;
+    width: clamp(21px, 7.18vw, 55px);
+    height: clamp(21px, 7.18vw, 55px);
   }
   #hamburger-btn span {
     position: relative;
     top: 50%;
     left: 0px;
     display: block;
-    width: 28px;
-    height: 2px;
+    width: clamp(21px, 7.18vw, 55px);
+    height: clamp(1px, 0.51vw, 4px);
     background: #ffffff;
-    border-radius: 2px;
+    border-radius: clamp(3px, 1.28vw, 10px);
     transition: 0.5s;
   }
   #hamburger-btn span::before {
     position: absolute;
-    top: 10px;
+    top: clamp(7px, 2.56vw, 19px);
     content: '';
     display: block;
-    width: 28px;
-    height: 2px;
+    width: clamp(21px, 7.18vw, 55px);
+    height: clamp(1px, 0.51vw, 4px);
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: clamp(3px, 1.28vw, 10px);
     transition: 0.5s;
   }
   #hamburger-btn span::after {
     position: absolute;
-    top: -10px;
+    top: clamp(-19px, -2.56vw, -7px);
     content: '';
     display: block;
-    width: 28px;
-    height: 2px;
+    width: clamp(21px, 7.18vw, 55px);
+    height: clamp(1px, 0.51vw, 4px);
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: clamp(3px, 1.28vw, 10px);
     transition: 0.5s;
   }
   #hamburger-btn span.close {
@@ -346,9 +367,16 @@ header {
     visibility: visible;
     opacity: 1;
   }
+  .farstview img {
+    position: absolute;
+    width: clamp(300px, 100vw, 768px);
+    height: clamp(501px, 167vw, 1283px);
+    top: 0;
+    z-index: -1;
+  }
   .catch {
-    margin: 310px auto 0;
-    font-size: 45px;
+    margin: clamp(213px, 71.3vw, 547px) auto 0;
+    font-size: 2.82rem;
     width: max-content;
   }
   .upmove_uper {
